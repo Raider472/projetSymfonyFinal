@@ -1,0 +1,33 @@
+WH40k
+
+Figurine {
+    -> nom /string
+    -> image (oneToOne) /class
+    -> faction /class
+    -> point /int
+    -> peinture /class
+}
+
+Image {
+    -> chemin /string
+}
+
+Faction {
+    -> nom /string
+}
+
+Peinture {
+    -> nom /string
+    -> couleur (hex) /string
+}
+
+Armée {
+    -> nom /string
+    -> figurines (ManyToMany) /class
+    
+}
+
+User {
+    -> admin
+    -> User
+}
