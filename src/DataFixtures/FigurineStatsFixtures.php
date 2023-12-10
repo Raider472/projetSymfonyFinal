@@ -14,6 +14,8 @@ class FigurineStatsFixtures extends Fixture
     {
         $arrayStats = [
             ['name' => 'Guerrier Nécrons', 'movement' => 5, 'toughness' => 4, 'save' => 4, 'wound' => 1, 'leadership' => 7, 'OC' => 2, 'minModel' => 10, 'maxModel' => 20],
+            ['name' => 'Destroyers Skorpekh', 'movement' => 7, 'toughness' => 6, 'save' => 3, 'wound' => 3, 'leadership' => 7, 'OC' => 2, 'minModel' => 3, 'maxModel' => 6],
+            ['name' => 'Destroyers Ophydiens', 'movement' => 9, 'toughness' => 5, 'save' => 4, 'wound' => 3, 'leadership' => 7, 'OC' => 2, 'minModel' => 3, 'maxModel' => 6],
         ];
 
         foreach ($arrayStats as $arrayStat) {

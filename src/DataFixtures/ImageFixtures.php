@@ -14,6 +14,8 @@ class ImageFixtures extends Fixture
     {
         $arrayImages = [
             ['name' => 'Guerrier Nécrons', 'path' => 'https://www.warhammer.com/app/resources/catalog/product/920x950/99120110052_NecronWarriorsLead.jpg?fm=webp&w=920&h=948'],
+            ['name' => 'Destroyers Skorpekh', 'path' => 'https://www.warhammer.com/app/resources/catalog/product/920x950/99120110051_SkorpekhDestroyersLead.jpg?fm=webp&w=920&h=948'],
+            ['name' => 'Destroyers Ophydiens', 'path' => 'https://www.warhammer.com/app/resources/catalog/product/920x950/99120110053_NECOphydianDestroyersLead.jpg?fm=webp&w=920&h=948'],
         ];
 
         foreach ($arrayImages as $arrayImage) {

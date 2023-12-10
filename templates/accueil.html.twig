@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        {% block titreHeader %}
+            <title>Accueil - WH40K</title>
+        {% endblock %}
+        <link rel="icon" href="https://www.warhammer.com/favicon-white.png">
+    </head>
+    <body>
+        <div class="header">
+            {% block titrePage %}
+                <h1 class="titre">Warhammer 40K</h1>
+            {% endblock %}
+            <nav>
+                <ul>
+                    <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                    <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
+                    <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
+                    <li><a href="">Créer une armée</a></li>
+                    <li><a href="">Ajouter une figurine</a></li>
+                    <li><a href="">Connexion</a></li>
+                </ul>
+            </nav>
+        </div>
+        {% block body %}
+
+        {% endblock %}
+        <style>
+            body {
+                font-family: 'Arial', sans-serif;
+                margin: 0;
+                padding: 0;
+                background-image: url("{{ asset("img/40kbackgroundmain.jpg") }}");
+            }
+
+            .header {
+                background-image: url("{{ asset("img/40kheader.jpg") }}");
+            }
+
+            .titre {
+                text-align: center;
+                color: #fff;
+                margin: 0;
+                padding-top: 10px;
+                padding-bottom: 10px;
+            }
+
+            nav {
+                padding: 20px;
+            }
+
+            nav ul {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+            }
+
+            nav li {
+                margin: 0 15px;
+            }
+
+            nav a {
+                text-decoration: none;
+                color: #fff;
+                font-weight: bold;
+                font-size: 16px;
+            }
+
+            
+            .carte_container {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-evenly;
+                padding: 20px;
+                margin-left: 10%; /* Marge de 20px à gauche */
+                margin-right: 10%; /* Marge de 20px à droite */
+            }
+
+            .carte_container a {
+                text-decoration: none;
+            }
+
+            .carte {
+                background-color: #fff;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                overflow: hidden;
+                margin: 10px;
+                width: 300px;
+                text-align: center;
+            }
+
+            .carte:hover {
+                transform: scale(1.1); /* Agrandit la boîte de 10% lors du survol */
+            }
+
+            .carte a {
+                text-decoration: none;
+                color: #333;
+            }
+
+            .carte h2 {
+                margin: 10px 0;
+            }
+
+            .carte img {
+                max-width: 100%;
+                height: auto;
+            }
+        </style>
+    </body>
+</html>

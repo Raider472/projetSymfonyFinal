@@ -1,0 +1,29 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Peintures - WH40K</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">Peintures</h1>
+{% endblock %}
+{% block body %}
+    <div class="carte_container">
+    {% for paint in paints %}
+        <div class="carte">
+            <a href="">
+                <h2>{{paint.type}}</h2>
+                <div class="couleur_cercle_{{ paint.id}}"></div>
+                <h2>{{paint.name}}</h2>
+            </a>
+        </div>
+        <style>
+            .carte .couleur_cercle_{{ paint.id}}{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin: 0 auto;
+                background-color: {{paint.color}}; 
+        }
+        </style>
+    {% endfor %}
+    </div>
+{% endblock %}

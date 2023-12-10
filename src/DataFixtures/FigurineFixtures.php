@@ -18,7 +18,7 @@ class FigurineFixtures extends Fixture implements DependentFixtureInterface
         $figurine->setName('Guerrier Nécrons');
         $figurine->setImage($this->getReference(ImageFixtures::IMAGE_REFERENCE.'_Guerrier Nécrons'));
         $figurine->setFaction($this->getReference(FactionFixtures::FACTION_REFERENCE.'_Nécron'));
-        $figurine->setPoints(130);
+        $figurine->setPoints(110);
         $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Leadbelcher'));
         $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Runelord Brass'));
         $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Corax White'));
@@ -28,6 +28,36 @@ class FigurineFixtures extends Fixture implements DependentFixtureInterface
         $figurine->addRangedWeapon($this->getReference(GunFixtures::GUN_REFERENCE.'_Écorcheur de Gauss'));
         $figurine->addRangedWeapon($this->getReference(GunFixtures::GUN_REFERENCE.'_Faucheuse Gauss'));
         $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Arme de combat rapproché (guerriers necrons)'));
+        $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
+
+        $figurine = new Figurine();
+        $manager->persist($figurine);
+        $figurine->setName('Destroyers Skorpekh');
+        $figurine->setImage($this->getReference(ImageFixtures::IMAGE_REFERENCE.'_Destroyers Skorpekh'));
+        $figurine->setFaction($this->getReference(FactionFixtures::FACTION_REFERENCE.'_Nécron'));
+        $figurine->setPoints(100);
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Leadbelcher'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Runelord Brass'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Corax White'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Tesseract Glow'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Nuln Oil'));
+        $figurine->setStats($this->getReference(FigurineStatsFixtures::FIGURINESTATS_REFERENCE.'_Destroyers Skorpekh'));
+        $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Armes hyperphase de Skorpekh'));
+        $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
+
+        $figurine = new Figurine();
+        $manager->persist($figurine);
+        $figurine->setName('Destroyers Ophydiens');
+        $figurine->setImage($this->getReference(ImageFixtures::IMAGE_REFERENCE.'_Destroyers Ophydiens'));
+        $figurine->setFaction($this->getReference(FactionFixtures::FACTION_REFERENCE.'_Nécron'));
+        $figurine->setPoints(100);
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Leadbelcher'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Runelord Brass'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Corax White'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Tesseract Glow'));
+        $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Nuln Oil'));
+        $figurine->setStats($this->getReference(FigurineStatsFixtures::FIGURINESTATS_REFERENCE.'_Destroyers Ophydiens'));
+        $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Armes hyperphases ophydiennes'));
         $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
 
         $manager->flush();

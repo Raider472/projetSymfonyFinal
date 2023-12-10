@@ -13,12 +13,12 @@ class PaintFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $arrayPaints = [
-            ['name' => 'Leadbelcher', 'color' => '#808080', 'type' => 'base'],
-            ['name' => 'Runelord Brass', 'color' => '#544d1d', 'type' => 'base'],
-            ['name' => 'Corax White', 'color' => '#ffffff', 'type' => 'base'],
-            ['name' => 'Tesseract Glow', 'color' => '#33cc33', 'type' => 'special'],
-            ['name' => 'Nuln Oil', 'color' => '#595959', 'type' => 'shade'],
-            ['name' => 'Agrax Earthshade', 'color' => '#793a00', 'type' => 'shade'],
+            ['name' => 'Leadbelcher', 'color' => '#808080', 'type' => 'Base'],
+            ['name' => 'Runelord Brass', 'color' => '#544d1d', 'type' => 'Base'],
+            ['name' => 'Corax White', 'color' => '#e8e7e3', 'type' => 'Base'],
+            ['name' => 'Tesseract Glow', 'color' => '#33cc33', 'type' => 'Special'],
+            ['name' => 'Nuln Oil', 'color' => '#595959', 'type' => 'Shade'],
+            ['name' => 'Agrax Earthshade', 'color' => '#793a00', 'type' => 'Shade'],
         ];
 
         foreach ($arrayPaints as $arrayPaint) {
