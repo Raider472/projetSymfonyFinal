@@ -24,6 +24,9 @@ class Paint
     #[ORM\ManyToMany(targetEntity: Figurine::class, mappedBy: 'paint')]
     private Collection $figurines;
 
+    #[ORM\Column(length: 255)]
+    private ?string $type = null;
+
     public function __construct()
     {
         $this->figurines = new ArrayCollection();
@@ -81,6 +84,18 @@ class Paint
         if ($this->figurines->removeElement($figurine)) {
             $figurine->removePaint($this);
         }
+
+        return $this;
+    }
+
+    public function getType(): ?string
+    {
+        return $this->type;
+    }
+
+    public function setType(string $type): static
+    {
+        $this->type = $type;
 
         return $this;
     }
