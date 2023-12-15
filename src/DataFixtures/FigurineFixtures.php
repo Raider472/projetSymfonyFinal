@@ -2,7 +2,9 @@
 
 namespace App\DataFixtures;
 
+use App\Doctrine\DBAL\Type\TypeOfStatusEnumType;
 use App\Entity\Figurine;
+use App\Enum\TypeOfStatus;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
@@ -28,6 +30,7 @@ class FigurineFixtures extends Fixture implements DependentFixtureInterface
         $figurine->addRangedWeapon($this->getReference(GunFixtures::GUN_REFERENCE.'_Écorcheur de Gauss'));
         $figurine->addRangedWeapon($this->getReference(GunFixtures::GUN_REFERENCE.'_Faucheuse Gauss'));
         $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Arme de combat rapproché (guerriers necrons)'));
+        $figurine->setStatus(TypeOfStatus::STOCK);
         $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
 
         $figurine = new Figurine();
@@ -43,6 +46,7 @@ class FigurineFixtures extends Fixture implements DependentFixtureInterface
         $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Nuln Oil'));
         $figurine->setStats($this->getReference(FigurineStatsFixtures::FIGURINESTATS_REFERENCE.'_Destroyers Skorpekh'));
         $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Armes hyperphase de Skorpekh'));
+        $figurine->setStatus(TypeOfStatus::PRECOMMANDE);
         $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
 
         $figurine = new Figurine();
@@ -58,6 +62,7 @@ class FigurineFixtures extends Fixture implements DependentFixtureInterface
         $figurine->addPaint($this->getReference(PaintFixtures::PAINT_REFERENCE.'_Nuln Oil'));
         $figurine->setStats($this->getReference(FigurineStatsFixtures::FIGURINESTATS_REFERENCE.'_Destroyers Ophydiens'));
         $figurine->addMeleeWeapon($this->getReference(MeleeWeaponFixtures::MELEE_REFERENCE.'_Armes hyperphases ophydiennes'));
+        $figurine->setStatus(TypeOfStatus::HORSTOCK);
         $this->addReference(self::FIGURINE_REFERENCE.'_'.$figurine->getName(), $figurine);
 
         $manager->flush();

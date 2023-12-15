@@ -11,7 +11,11 @@
         <div class="carte">
             <a href="">
                 <h2>{{figurine.faction.name}}</h2>
-                <img src="{{figurine.image.path}}" alt="{{figurine.faction.name}} - {{figurine.name}}">
+                {% if figurine.status.value == "Hors Stock" %}
+                    <img src="{{ asset("img/OFS.png") }}">
+                {% else %}
+                    <img src="{{figurine.image.path}}" alt="{{figurine.faction.name}} - {{figurine.name}}">
+                {% endif %}
                 <h2>{{figurine.name}}</h2>
             </a>
         </div>
