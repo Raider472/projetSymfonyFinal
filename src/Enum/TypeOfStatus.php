@@ -6,5 +6,5 @@ enum TypeOfStatus: string
 {
     case STOCK = "En Stock";
     case HORSTOCK = "Hors Stock";
-    case PRECOMMANDE = "précommande";
+    case PRECOMMANDE = "Précommande";
 }
