@@ -14,12 +14,23 @@
             {% endblock %}
             <nav>
                 <ul>
-                    <li><a href="{{ path('accueil') }}">Accueil</a></li>
-                    <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
-                    <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
-                    <li><a href="">Créer une armée</a></li>
-                    <li><a href="">Ajouter une figurine</a></li>
-                    <li><a href="{{path('app_register') }}">Connexion</a></li>
+                    {% if is_granted('IS_AUTHENTICATED_FULLY') %}
+                        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                        <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
+                        <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
+                        <li><a href="">Créer une armée</a></li>
+                        {% if is_granted('ROLE_ADMIN') %}
+                        <li><a href="">Ajouter une figurine</a></li>
+                        {% endif %}
+                        <li><a href="{{path('app_logout') }}">Déconnexion</a></li>
+                    {% else %}
+                        <li><a href="{{ path('accueil') }}">Accueil</a></li>
+                        <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
+                        <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
+                        <li><a href="">Créer une armée</a></li>
+                        <li><a href="{{path('app_login') }}">Connexion</a></li>
+                        <li><a href="{{path('app_register') }}">Inscription</a></li>
+                    {% endif %}
                 </ul>
             </nav>
         </div>

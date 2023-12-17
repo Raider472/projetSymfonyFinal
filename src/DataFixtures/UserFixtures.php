@@ -23,6 +23,7 @@ class UserFixtures extends Fixture
     {
         $arrayUsers = [
             ['userName' => 'Admin', 'roles' => ["ROLE_ADMIN"], 'password' => 'Admin1'],
+            ['userName' => 'user', 'roles' => [], 'password' => 'user1']
         ];
 
         foreach ($arrayUsers as $arrayUser) {

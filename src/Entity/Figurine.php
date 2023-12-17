@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use App\Doctrine\DBAL\Type\TypeOfStatusEnumType;
 use App\Enum\TypeOfStatus;
 use App\Repository\FigurineRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -221,11 +220,13 @@ class Figurine
         return $this;
     }
 
-    public function getStatus(): TypeOfStatus {
+    public function getStatus(): TypeOfStatus
+    {
         return $this->status;
     }
 
-    public function setStatus(TypeOfStatus $Type) {
+    public function setStatus(TypeOfStatus $Type)
+    {
         $this->status = $Type;
     }
 }

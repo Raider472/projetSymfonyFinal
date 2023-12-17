@@ -11,7 +11,11 @@
         <div class="carte">
             <a href="">
                 <h2>{{paint.type}}</h2>
-                <div class="couleur_cercle_{{ paint.id}}"></div>
+                {% if paint.status.value == "Hors Stock" %}
+                    <h3 style="color: red">Hors Stock</h3>
+                {% else %}
+                    <div class="couleur_cercle_{{ paint.id}}"></div>
+                {% endif %}
                 <h2>{{paint.name}}</h2>
             </a>
         </div>

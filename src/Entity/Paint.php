@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Enum\TypeOfStatus;
 use App\Repository\PaintRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,6 +27,9 @@ class Paint
 
     #[ORM\Column(length: 255)]
     private ?string $type = null;
+
+    #[ORM\Column(type: 'type_of_status_enum')]
+    private TypeOfStatus $status;
 
     public function __construct()
     {
@@ -98,5 +102,15 @@ class Paint
         $this->type = $type;
 
         return $this;
+    }
+
+    public function getStatus(): TypeOfStatus
+    {
+        return $this->status;
+    }
+
+    public function setStatus(TypeOfStatus $Type)
+    {
+        $this->status = $Type;
     }
 }
