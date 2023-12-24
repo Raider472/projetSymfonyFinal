@@ -7,20 +7,88 @@
     <h1 class="titre">Connexion</h1>
 {% endblock %}
 {% block body %}
-{% if error %}
-    <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-{% endif %}
+    <div class="form-container">
+        {% if error %}
+            <div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+        {% endif %}
 
-<form action="{{ path('app_login') }}" method="post">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}">
+        <form action="{{ path('app_login') }}" method="post">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="_username" value="{{ last_username }}">
+            </div>
 
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="_password">
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="_password">
+            </div>
 
-    {# If you want to control the URL the user is redirected to on success #}
-    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            {# If you want to control the URL the user is redirected to on success #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
 
-    <button type="submit">login</button>
-</form>
+            <div class="form-btn">
+                <button type="submit" class="btn">Login</button>
+            </div>
+        </form>
+    </div>
+
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+
+        .form-container {
+            max-width: 400px;
+            margin: auto;
+            padding: 20px;
+            margin-top: 50px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 1px solid #ccc;
+        }
+
+        .form-btn {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
+
+        .form-container h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-container .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-container form input {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container form button {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-container form button:hover {
+            background-color: #297fb8;
+        }
+    </style>
 {% endblock %}

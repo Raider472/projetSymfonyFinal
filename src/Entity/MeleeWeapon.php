@@ -19,7 +19,7 @@ class MeleeWeapon
     private ?string $name = null;
 
     #[ORM\Column]
-    private ?int $numberOfAttacks = null;
+    private ?string $numberOfAttacks = null;
 
     #[ORM\Column]
     private ?int $weaponSkill = null;
@@ -58,12 +58,12 @@ class MeleeWeapon
         return $this;
     }
 
-    public function getNumberOfAttacks(): ?int
+    public function getNumberOfAttacks(): ?string
     {
         return $this->numberOfAttacks;
     }
 
-    public function setNumberOfAttacks(int $numberOfAttacks): static
+    public function setNumberOfAttacks(string $numberOfAttacks): static
     {
         $this->numberOfAttacks = $numberOfAttacks;
 

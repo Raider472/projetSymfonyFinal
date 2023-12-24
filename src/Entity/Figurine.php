@@ -39,10 +39,10 @@ class Figurine
     #[ORM\OneToOne(inversedBy: 'figurine', cascade: ['persist', 'remove'])]
     private ?FigurineStats $stats = null;
 
-    #[ORM\ManyToMany(targetEntity: Gun::class, inversedBy: 'figurines')]
+    #[ORM\ManyToMany(targetEntity: Gun::class, inversedBy: 'figurines', cascade: ['persist'])]
     private Collection $rangedWeapons;
 
-    #[ORM\ManyToMany(targetEntity: MeleeWeapon::class, inversedBy: 'figurines')]
+    #[ORM\ManyToMany(targetEntity: MeleeWeapon::class, inversedBy: 'figurines', cascade: ['persist'])]
     private Collection $meleeWeapons;
 
     #[ORM\Column(type: 'type_of_status_enum')]
