@@ -36,7 +36,7 @@ class FigurineFormType extends AbstractType
             ->add('faction', EntityType::class, [
                 'class' => Faction::class,
                 'choice_label' => 'name',
-                'label' => 'Faction',
+                'label' => 'Factions',
             ])
             ->add('points', IntegerType::class, [
                 'label' => 'Nombre de points',
@@ -51,12 +51,9 @@ class FigurineFormType extends AbstractType
             ->add('stats', FigurineStatsType::class, [
                 'label' => false,
             ])
-            ->add('status', EnumType::class, [
-                'class' => TypeOfStatus::class,
-                'label' => 'Statut',
-            ])
             ->add('rangedWeapons', CollectionType::class, [
                 'entry_type' => GunType::class,
+                'label' => 'Armes de Tir',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
@@ -64,10 +61,15 @@ class FigurineFormType extends AbstractType
             ])
             ->add('meleeWeapons', CollectionType::class, [
                 'entry_type' => MeleeWeaponType::class,
+                'label' => 'Armes de Melée',
                 'allow_add' => true,
                 'allow_delete' => true,
                 'by_reference' => false,
                 'entry_options' => ['label' => false],
+            ])
+            ->add('status', EnumType::class, [
+                'class' => TypeOfStatus::class,
+                'label' => 'Statut',
             ])
             ->add('ajouter', SubmitType::class, [
                 'attr' => ['class' => 'save'],

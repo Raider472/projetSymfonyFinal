@@ -6,84 +6,39 @@
     <h1 class="titre">Ajout d'une Figurine</h1>
 {% endblock %}
 {% block body %}
-    <div class="form-container">
-        {{ form_start(formulaire) }}
-            {% for child in formulaire.children %}
-                {% if child.vars.name == "rangedWeapons" %}
-                    <div class="rangedWeapons" data-index="{{ formulaire.rangedWeapons|length > 0 ? formulaire.rangedWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.rangedWeapons.vars.prototype)|e('html_attr') }}">
-                        {{form_row(child)}}
+    <br class="mt-4 mb-4">
+    <div class="d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8">
+                    <div class="bg-white rounded shadow-5-strong p-5">
+                        {{ form_start(formulaire) }}
+                            {% for child in formulaire.children %}
+                                {% if child.vars.name == "rangedWeapons" %}
+                                    <div class="rangedWeapons" data-index="{{ formulaire.rangedWeapons|length > 0 ? formulaire.rangedWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.rangedWeapons.vars.prototype)|e('html_attr') }}">
+                                        {{form_row(child)}}
+                                    </div>
+                                {% elseif child.vars.name == "meleeWeapons" %}
+                                    <div class="meleeWeapons" data-index="{{ formulaire.meleeWeapons|length > 0 ? formulaire.meleeWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.meleeWeapons.vars.prototype)|e('html_attr') }}">
+                                        {{form_row(child)}}
+                                    </div>
+                                {% else %}
+                                    {{form_row(child)}}
+                                {% endif %}
+                            {% endfor %}
+                            {{ form_rest(formulaire) }}
+                        {{ form_end(formulaire) }}
                     </div>
-                {% elseif child.vars.name == "meleeWeapons" %}
-                    <div class="meleeWeapons" data-index="{{ formulaire.meleeWeapons|length > 0 ? formulaire.meleeWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.meleeWeapons.vars.prototype)|e('html_attr') }}">
-                        {{form_row(child)}}
-                    </div>
-                {% else %}
-                    {{form_row(child)}}
-                {% endif %}
-            {% endfor %}
-            {{ form_rest(formulaire) }}
-        {{ form_end(formulaire) }}
+                </div>
+            </div>
+        </div>
     </div>
-    <button type="button" class="add_item_link" data-collection-holder-class="rangedWeapons">Ajouter une Arme de Tir</button>
-    <button type="button" class="add_item_link" data-collection-holder-class="meleeWeapons">Ajouter une Arme de Melee</button>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-
-        .form-container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            margin-top: 50px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        .form-group .meleeWeapons .rangedWeapons {
-            margin-bottom: 15px;
-        }
-
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-container form input,
-        .form-container form button {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .form-container form button {
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-container form button:hover {
-            background-color: #297fb8;
-        }
-
-        /* Ajout de styles spécifiques pour les cases à cocher du champ Paint */
-        .form-checkbox-group label {
-            display: block;
-            margin-bottom: 5px;
-        }
-    </style>
+    <br class="mt-2 mb-2">
+    <div class="form-btn d-flex align-items-center justify-content-center grid gap-3">
+        <button type="button" class="add_item_link btn btn-primary btn-block align-items-center" data-collection-holder-class="rangedWeapons">Ajouter une Arme de Tir</button>
+        <button type="button" class="add_item_link btn btn-primary btn-block align-items-center" data-collection-holder-class="meleeWeapons">Ajouter une Arme de Melee</button>
+    </div>
+    <br class="mt-2 mb-2">
     <script>
         const addFormToCollection = (e) => {
             const collectionHolder = document.querySelector('.' + e.currentTarget.dataset.collectionHolderClass);

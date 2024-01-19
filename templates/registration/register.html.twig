@@ -6,88 +6,31 @@
     <h1 class="titre">Inscription</h1>
 {% endblock %}
 {% block body %}
-    <div class="form-container">
-        {{ form_errors(registrationForm) }}
+    <br class="mt-4 mb-4">
+    <div class="d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8">
+                    <div class="bg-white rounded shadow-5-strong p-5">
+                        {{ form_errors(registrationForm) }}
 
-        {{ form_start(registrationForm) }}
-        <div class="form-group">
-            {{ form_row(registrationForm.username, {'label': 'Username'}) }}
+                        {{ form_start(registrationForm) }}
+                        <div>
+                            {{ form_row(registrationForm.username, {'label': 'Username'}) }}
+                        </div>
+                        <div>
+                            {{ form_row(registrationForm.plainPassword, {'label': 'Password'}) }}
+                        </div>
+                        <div>
+                            {{ form_row(registrationForm.agreeTerms, {'label': 'Agree to Terms'}) }}
+                        </div>
+                        <div class="form-btn d-flex align-items-center justify-content-center">
+                            <button type="submit" class="btn btn-primary btn-block align-items-center">Register</button>
+                        </div>
+                        {{ form_end(registrationForm) }}
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-group">
-            {{ form_row(registrationForm.plainPassword, {'label': 'Password'}) }}
-        </div>
-        <div class="form-group">
-            {{ form_row(registrationForm.agreeTerms, {'label': 'Agree to Terms'}) }}
-        </div>
-        <div class="form-btn">
-            <button type="submit" class="btn">Register</button>
-        </div>
-        {{ form_end(registrationForm) }}
     </div>
-
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f2f2f2;
-        }
-
-        .form-container {
-            max-width: 400px;
-            margin: auto;
-            padding: 20px;
-            margin-top: 50px;
-            background-color: #fff;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 1px solid #ccc;
-        }
-
-        .form-group div {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .form-btn {
-            display: flex;
-            justify-content: center;
-            margin-bottom: 15px;
-        }
-
-        .form-container h1 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        .form-container .form-group {
-            margin-bottom: 15px;
-        }
-
-        .form-container form input {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            box-sizing: border-box;
-        }
-
-        .form-container form button {
-            width: 100%;
-            max-width: 300px;
-            padding: 10px;
-            background-color: #3498db;
-            color: #fff;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        .form-container form button:hover {
-            background-color: #297fb8;
-        }
-    </style>
 {% endblock %}
