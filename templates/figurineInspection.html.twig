@@ -1,0 +1,120 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Inspection d'une Figurine</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">Inspection d'une Figurine</h1>
+{% endblock %}
+{% block body %}
+    <div class="mini-carte-container">
+        <div class="mini-carte">
+            <img src="{{figurine.image.path}}" alt="{{figurine.faction.name}} - {{figurine.name}}">
+            <h3>{{figurine.name}}</h3>
+        </div>
+        <div>
+            <h3>Statuts : {{figurine.status.value}}</h3>
+            <h3>Factions : {{figurine.faction.name}}</h3>
+            <h3>Coût en points : {{figurine.points}}</h3>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="button-admin">
+                <a href="">
+                    <img src="{{ asset("img/modification.png") }}" alt="Modifier" width="40" height="40">
+                </a>
+                <a href="">
+                    <img src="{{ asset("img/suppression.svg") }}" alt="Supprimer" width="40" height="40">
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="dataSheet">
+        <h4>Fiche de données : </h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Mouvement</th>
+                    <th>Endurance</th>
+                    <th>Sauvegarde</th>
+                    <th>Blessures</th>
+                    <th>Commandement</th>
+                    <th>OC</th>
+                    <th>Modéles minimum</th>
+                    <th>Modéles maximum</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{figurine.stats.movement}}</td>
+                    <td>{{figurine.stats.toughness}}</td>
+                    <td>{{figurine.stats.save}}</td>
+                    <td>{{figurine.stats.wound}}</td>
+                    <td>{{figurine.stats.leadership}}</td>
+                    <td>{{figurine.stats.oc}}</td>
+                    <td>{{figurine.stats.minModel}}</td>
+                    <td>{{figurine.stats.maxModels}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    {% if figurine.rangedWeapons|length != 0 %}
+    <div class="dataSheet">
+        <h4>Arme de tir : </h4>
+        {% for arme in figurine.rangedWeapons %}
+            <h5>{{arme.name}}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Portée de tir</th>
+                        <th>Nombre d'attaques</th>
+                        <th>Compétence de tir</th>
+                        <th>Force</th>
+                        <th>Pénetration d'armure</th>
+                        <th>Dégats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{arme.weaponRange}}</td>
+                        <td>{{arme.numberOfAttacks}}</td>
+                        <td>{{arme.ballisticSkill}}</td>
+                        <td>{{arme.strenght}}</td>
+                        <td>{{arme.armorPenetration}}</td>
+                        <td>{{arme.damage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    {% if figurine.meleeWeapons|length != 0 %}
+    <div class="dataSheet">
+        <h4>Arme de mêlée : </h4>
+        {% for arme in figurine.meleeWeapons %}
+            <h5>{{arme.name}}</h5>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nombre d'attaques</th>
+                        <th>Compétence de mêlée</th>
+                        <th>Force</th>
+                        <th>Pénetration d'armure</th>
+                        <th>Dégats</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>{{arme.numberOfAttacks}}</td>
+                        <td>{{arme.weaponSkill}}</td>
+                        <td>{{arme.strenght}}</td>
+                        <td>{{arme.armorPenetration}}</td>
+                        <td>{{arme.damage}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        {% endfor %}
+    </div>
+    {% endif %}
+{% endblock %}
