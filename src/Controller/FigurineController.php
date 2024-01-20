@@ -26,13 +26,9 @@ class FigurineController extends AbstractController
     }
 
     #[Route('/figurineAjout', name: 'creationFigurine')]
-    public function ajoutFigurine(Request $request, EntityManagerInterface $em, GunRepository $test): Response {
+    public function ajoutFigurine(Request $request, EntityManagerInterface $em): Response {
         
         $figurine = new Figurine();
-        /*$gun = $test->findAll();
-        foreach($gun as $guns) {
-            $figurine->addRangedWeapon($guns);
-        }*/
         $form = $this->createForm(FigurineFormType::class, $figurine);
         $form->handleRequest($request);
 
@@ -50,6 +46,15 @@ class FigurineController extends AbstractController
         return $this->render('ajoutFigurine.html.twig', [
             'figurine' => $figurine,
             'formulaire' => $form->createView()
+        ]);
+    }
+
+    #[Route('/{id}', name: 'figurineInspection')]
+    public function inspectionFigurine(string $id, FigurineRepository $figurineRepository): Response {
+        $figurine = $figurineRepository->findOneBy(["id" => $id]);
+
+        return $this->render('figurineInspection.html.twig', [
+            "figurine" =>  $figurine,
         ]);
     }
 }
