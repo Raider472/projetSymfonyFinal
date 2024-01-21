@@ -49,7 +49,7 @@ class FigurineController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'figurineInspection')]
+    #[Route('/figurineInspection/{id}', name: 'figurineInspection')]
     public function inspectionFigurine(string $id, FigurineRepository $figurineRepository): Response {
         $figurine = $figurineRepository->findOneBy(["id" => $id]);
 
