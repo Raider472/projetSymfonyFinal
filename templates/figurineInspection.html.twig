@@ -17,10 +17,10 @@
             <h3>Coût en points : {{figurine.points}}</h3>
             {% if is_granted('ROLE_ADMIN') %}
             <div class="button-admin">
-                <a href="">
+                <a href="{{ path("modificationFigurine", {"id": figurine.id}) }}">
                     <img src="{{ asset("img/modification.png") }}" alt="Modifier" width="40" height="40">
                 </a>
-                <a href="">
+                <a href="{{ path("suppressionFigurine", {"id": figurine.id}) }}">
                     <img src="{{ asset("img/suppression.svg") }}" alt="Supprimer" width="40" height="40">
                 </a>
             </div>
