@@ -22,6 +22,7 @@
                         <li><a href="">Créer une armée</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{path('creationFigurine') }}">Ajouter une figurine</a></li>
+                        <li><a href="{{path('tableauDeBord') }}">Tableau de Bord</a></li>
                         {% endif %}
                         <li><a href="{{path('app_logout') }}">Déconnexion</a></li>
                     {% else %}
