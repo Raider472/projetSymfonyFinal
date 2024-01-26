@@ -9,7 +9,7 @@
     <div class="carte_container">
     {% for figurine in figurines %}
         <div class="carte">
-            <a href="">
+            <a href={{ path("figurineInspection", {"id": figurine.id}) }}>
                 <h2>{{figurine.faction.name}}</h2>
                 {% if figurine.status.value == "Hors Stock" %}
                     <img src="{{ asset("img/OFS.png") }}">
