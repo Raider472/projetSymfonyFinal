@@ -1,0 +1,16 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Listes - WH40K</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">Liste des Armées crées</h1>
+{% endblock %}
+{% block body %}
+    {% for army in armies %}
+        <p>{{army.name}}</p>
+        {% for figurine in army.figurines %}
+            <p>{{figurine.name}}</p>
+        {% endfor %}
+        <p>{{army.user.username}}</p>
+    {% endfor %}
+{% endblock %}

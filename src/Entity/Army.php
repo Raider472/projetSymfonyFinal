@@ -21,6 +21,10 @@ class Army
     #[ORM\ManyToMany(targetEntity: Figurine::class, inversedBy: 'armies')]
     private Collection $figurines;
 
+    #[ORM\ManyToOne(inversedBy: 'armies')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?User $user = null;
+
     public function __construct()
     {
         $this->figurines = new ArrayCollection();
@@ -63,6 +67,18 @@ class Army
     public function removeFigurine(Figurine $figurine): static
     {
         $this->figurines->removeElement($figurine);
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): static
+    {
+        $this->user = $user;
 
         return $this;
     }

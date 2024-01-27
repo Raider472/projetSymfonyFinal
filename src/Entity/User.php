@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
@@ -28,6 +30,14 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     #[ORM\Column]
     private ?string $password = null;
+
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Army::class, orphanRemoval: true)]
+    private Collection $armies;
+
+    public function __construct()
+    {
+        $this->armies = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -97,5 +107,35 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    /**
+     * @return Collection<int, Army>
+     */
+    public function getArmies(): Collection
+    {
+        return $this->armies;
+    }
+
+    public function addArmy(Army $army): static
+    {
+        if (!$this->armies->contains($army)) {
+            $this->armies->add($army);
+            $army->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArmy(Army $army): static
+    {
+        if ($this->armies->removeElement($army)) {
+            // set the owning side to null (unless already changed)
+            if ($army->getUser() === $this) {
+                $army->setUser(null);
+            }
+        }
+
+        return $this;
     }
 }

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Army;
 use App\Form\Type\ArmyType;
+use App\Repository\ArmyRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -20,8 +21,8 @@ class ArmyController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            //$user = $this->getUser();
-            //$army->setUser($user);
+            $user = $this->getUser();
+            $army->setUser($user);
             
             $em->persist($army);
             $em->flush();
@@ -34,6 +35,16 @@ class ArmyController extends AbstractController
         return $this->render('creationListe.html.twig', [
             'army' => $army,
             'formulaire' => $form->createView(),
+        ]);
+    }
+
+    #[Route('/affichageListe', name: 'affichageListe')]
+    public function affichageListe(ArmyRepository $armyRepository): Response
+    {
+        $army = $armyRepository->findBy(["user" => $this->getUser()]);
+
+        return $this->render('afichageListe.html.twig', [
+            'armies' => $army,
         ]);
     }
 }
