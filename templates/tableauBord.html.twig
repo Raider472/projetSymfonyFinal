@@ -6,70 +6,78 @@
     <h1 class="titre">Tableau de Bord</h1>
 {% endblock %}
 {% block body %}
-    <h2>Figurines</h2>
-    <h3>nombres de figurines totale: {{figurines|length}}</h3>
-    {% for faction in factions %}
-        {% set factionName = faction.name %}
-        {% set numberFigFaction = 0 %}
-        {% for figurine in figurines %}
-            {% if figurine.faction.name == factionName %}
-                {% set numberFigFaction = numberFigFaction + 1 %}
-            {% endif %}
-        {% endfor %}
-        <h4>{{factionName}}: {{numberFigFaction}}</h4>
-    {% endfor %}
-    <h3>Stockage Figurines</h3>
-    {% set numberFigStock = 0 %}
-    {% set numberFigPre = 0 %}
-    {% set numberFigNoStock = 0 %}
-    {% for figurine in figurines %}
-        {% if figurine.status.value == "En Stock" %}
-            {% set numberFigStock = numberFigStock + 1 %}
-        {% elseif figurine.status.value == "Précommande" %}
-            {% set numberFigPre = numberFigPre + 1 %}
-        {% else %}
-            {% set numberFigNoStock = numberFigNoStock + 1 %}
-        {% endif %}
-    {% endfor %}
-    <h4>Figurines en stock: {{numberFigStock}}</h4>
-    <h4>Figurines en précommande: {{numberFigPre}}</h4>
-    <h4>Figurines hors stock: {{numberFigNoStock}}</h4>
-    <h2>Peintures</h2>
-    <h3>nombres de peintures totale: {{paints|length}}</h3>
-    {% set typeBase = 0 %}
-    {% set typeShade = 0 %}
-    {% set typeLayer = 0 %}
-    {% set typeSpecial = 0 %}
-    {% for paint in paints %}
-        {% if paint.type == "Base" %}
-            {% set typeBase = typeBase + 1 %}
-        {% elseif paint.type == "Shade" %}
-            {% set typeShade = typeShade + 1 %}
-        {% elseif paint.type == "Layer" %}
-            {% set typeLayer = typeLayer + 1 %}
-        {% elseif paint.type == "Special" %}
-            {% set typeSpecial = typeSpecial + 1 %}
-        {% endif%}
-    {% endfor %}
-    <h4>Base: {{typeBase}}</h4>
-    <h4>Shade: {{typeShade}}</h4>
-    <h4>Layer: {{typeLayer}}</h4>
-    <h4>Technical: {{typeSpecial}}</h4>
-    <h3>Stockage Peintures</h3>
-    {% set numberPaintStock = 0 %}
-    {% set numberPaintPre = 0 %}
-    {% set numberPaintNoStock = 0 %}
-    {% for paint in paints %}
-        {% if paint.status.value == "En Stock" %}
-            {% set numberPaintStock = numberPaintStock + 1 %}
-        {% elseif paint.status.value == "Précommande" %}
-            {% set numberPaintPre = numberPaintPre + 1 %}
-        {% else %}
-            {% set numberPaintNoStock = numberPaintNoStock + 1 %}
-        {% endif %}
-    {% endfor %}
-    <h4>Peintures en stock: {{numberPaintStock}}</h4>
-    <h4>Peintures en précommande: {{numberPaintPre}}</h4>
-    <h4>Peintures hors stock: {{numberPaintNoStock}}</h4>
+    <div class="tableauBord">
+        <div class="container-tableauBord">
+            <div>
+                <h2>Figurines</h2>
+                <h3>nombres de figurines totale: {{figurines|length}}</h3>
+                {% for faction in factions %}
+                    {% set factionName = faction.name %}
+                    {% set numberFigFaction = 0 %}
+                    {% for figurine in figurines %}
+                        {% if figurine.faction.name == factionName %}
+                            {% set numberFigFaction = numberFigFaction + 1 %}
+                        {% endif %}
+                    {% endfor %}
+                    <h4>{{factionName}}: {{numberFigFaction}}</h4>
+                {% endfor %}
+                <h3>Stockage Figurines</h3>
+                {% set numberFigStock = 0 %}
+                {% set numberFigPre = 0 %}
+                {% set numberFigNoStock = 0 %}
+                {% for figurine in figurines %}
+                    {% if figurine.status.value == "En Stock" %}
+                        {% set numberFigStock = numberFigStock + 1 %}
+                    {% elseif figurine.status.value == "Précommande" %}
+                        {% set numberFigPre = numberFigPre + 1 %}
+                    {% else %}
+                        {% set numberFigNoStock = numberFigNoStock + 1 %}
+                    {% endif %}
+                {% endfor %}
+                <h4>Figurines en stock: {{numberFigStock}}</h4>
+                <h4>Figurines en précommande: {{numberFigPre}}</h4>
+                <h4>Figurines hors stock: {{numberFigNoStock}}</h4>
+            </div>
+            <div>
+                <h2>Peintures</h2>
+                <h3>nombres de peintures totale: {{paints|length}}</h3>
+                {% set typeBase = 0 %}
+                {% set typeShade = 0 %}
+                {% set typeLayer = 0 %}
+                {% set typeSpecial = 0 %}
+                {% for paint in paints %}
+                    {% if paint.type == "Base" %}
+                        {% set typeBase = typeBase + 1 %}
+                    {% elseif paint.type == "Shade" %}
+                        {% set typeShade = typeShade + 1 %}
+                    {% elseif paint.type == "Layer" %}
+                        {% set typeLayer = typeLayer + 1 %}
+                    {% elseif paint.type == "Special" %}
+                        {% set typeSpecial = typeSpecial + 1 %}
+                    {% endif%}
+                {% endfor %}
+                <h4>Base: {{typeBase}}</h4>
+                <h4>Shade: {{typeShade}}</h4>
+                <h4>Layer: {{typeLayer}}</h4>
+                <h4>Technical: {{typeSpecial}}</h4>
+                <h3>Stockage Peintures</h3>
+                {% set numberPaintStock = 0 %}
+                {% set numberPaintPre = 0 %}
+                {% set numberPaintNoStock = 0 %}
+                {% for paint in paints %}
+                    {% if paint.status.value == "En Stock" %}
+                        {% set numberPaintStock = numberPaintStock + 1 %}
+                    {% elseif paint.status.value == "Précommande" %}
+                        {% set numberPaintPre = numberPaintPre + 1 %}
+                    {% else %}
+                        {% set numberPaintNoStock = numberPaintNoStock + 1 %}
+                    {% endif %}
+                {% endfor %}
+                <h4>Peintures en stock: {{numberPaintStock}}</h4>
+                <h4>Peintures en précommande: {{numberPaintPre}}</h4>
+                <h4>Peintures hors stock: {{numberPaintNoStock}}</h4>
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
