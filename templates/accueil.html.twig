@@ -19,7 +19,7 @@
                         <li><a href="{{ path('accueil') }}">Accueil</a></li>
                         <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
                         <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
-                        <li><a href="">Créer une armée</a></li>
+                        <li><a href="{{path('creationArmee')}}">Créer une armée</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{path('creationFigurine') }}">Ajouter une figurine</a></li>
                         <li><a href="{{path('tableauDeBord') }}">Tableau de Bord</a></li>
@@ -29,7 +29,7 @@
                         <li><a href="{{ path('accueil') }}">Accueil</a></li>
                         <li><a href="{{ path('affichageFigurine') }}">Figurines</a></li>
                         <li><a href="{{path('affichagePeinture') }}">Peintures</a></li>
-                        <li><a href="">Créer une armée</a></li>
+                        <li><a href="{{path('creationArmee')}}">Créer une armée</a></li>
                         <li><a href="{{path('app_login') }}">Connexion</a></li>
                         <li><a href="{{path('app_register') }}">Inscription</a></li>
                     {% endif %}

@@ -1,9 +1,9 @@
 {% extends "accueil.html.twig" %}
 {% block titreHeader %}
-    <title>Ajout d'une Figurine</title>
+    <title>Création Liste</title>
 {% endblock %}
 {% block titrePage %}
-    <h1 class="titre">Ajout d'une Figurine</h1>
+    <h1 class="titre">Création d'une armée</h1>
 {% endblock %}
 {% block body %}
     <br class="mt-4 mb-4">
@@ -14,12 +14,8 @@
                     <div class="bg-white rounded shadow-5-strong p-5">
                         {{ form_start(formulaire) }}
                             {% for child in formulaire.children %}
-                                {% if child.vars.name == "rangedWeapons" %}
-                                    <div class="rangedWeapons" data-index="{{ formulaire.rangedWeapons|length > 0 ? formulaire.rangedWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.rangedWeapons.vars.prototype)|e('html_attr') }}">
-                                        {{form_row(child)}}
-                                    </div>
-                                {% elseif child.vars.name == "meleeWeapons" %}
-                                    <div class="meleeWeapons" data-index="{{ formulaire.meleeWeapons|length > 0 ? formulaire.meleeWeapons|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.meleeWeapons.vars.prototype)|e('html_attr') }}">
+                                {% if child.vars.name == "figurines" %}
+                                    <div class="figurines" data-index="{{ formulaire.figurines|length > 0 ? formulaire.figurines|last.vars.name + 1 : 0 }}" data-prototype="{{ form_widget(formulaire.figurines.vars.prototype)|e('html_attr') }}">
                                         {{form_row(child)}}
                                     </div>
                                 {% elseif child.vars.name == "ajouter" %}
@@ -37,8 +33,7 @@
     </div>
     <br class="mt-2 mb-2">
     <div class="form-btn d-flex align-items-center justify-content-center grid gap-3">
-        <button type="button" class="add_item_link btn btn-primary btn-block align-items-center" data-collection-holder-class="rangedWeapons">Ajouter une Arme de Tir</button>
-        <button type="button" class="add_item_link btn btn-primary btn-block align-items-center" data-collection-holder-class="meleeWeapons">Ajouter une Arme de Melee</button>
+        <button type="button" class="add_item_link btn btn-primary btn-block align-items-center" data-collection-holder-class="figurines">Ajouter une Figurine</button>
     </div>
     <br class="mt-2 mb-2">
     <script>

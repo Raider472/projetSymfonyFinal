@@ -1,0 +1,39 @@
+<?php
+
+namespace App\Controller;
+
+use App\Entity\Army;
+use App\Form\Type\ArmyType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
+
+class ArmyController extends AbstractController
+{
+    #[Route('/armeeAjout', name: 'creationArmee')]
+    public function armeeAjout(Request $request, EntityManagerInterface $em): Response
+    {
+        $army = new Army();
+        $form = $this->createForm(ArmyType::class, $army);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            //$user = $this->getUser();
+            //$army->setUser($user);
+            
+            $em->persist($army);
+            $em->flush();
+
+            $this->addFlash('success', 'Liste créé!');
+
+            return $this->redirectToRoute('accueil');
+        }
+
+        return $this->render('creationListe.html.twig', [
+            'army' => $army,
+            'formulaire' => $form->createView(),
+        ]);
+    }
+}

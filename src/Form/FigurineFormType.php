@@ -3,17 +3,15 @@
 namespace App\Form\Type;
 
 use App\Entity\Faction;
-use App\Enum\TypeOfStatus;
-use App\Form\Data\FigurineFormData;
 use App\Entity\Figurine;
 use App\Entity\Paint;
+use App\Enum\TypeOfStatus;
 use App\Form\FigurineStatsType;
 use App\Form\GunType;
 use App\Form\ImageType;
 use App\Form\MeleeWeaponType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
