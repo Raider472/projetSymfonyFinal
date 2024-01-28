@@ -1,0 +1,22 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Détail d'une liste</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">Détail de la liste {{army.name}}</h1>
+{% endblock %}
+{% block body %}
+    <div class="divListe">
+        <h2>{{army.name}}</h2>
+        <h3>Fait par : {{army.user.username}}</h3>
+        <div>
+            <h2>Contenu de la liste :</h2>
+            {% for figurine in army.figurines %}
+                <h3>{{figurine.name}}</h3>
+            {% endfor %}
+        </div>
+        <a href="{{ path("suppressionListe", {"id": army.id}) }}">
+            <img src="{{ asset("img/suppression.svg") }}" alt="Supprimer" width="40" height="40">
+        </a>
+    </div>
+{% endblock %}

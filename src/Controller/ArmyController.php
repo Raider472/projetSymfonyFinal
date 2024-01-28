@@ -47,4 +47,25 @@ class ArmyController extends AbstractController
             'armies' => $army,
         ]);
     }
+
+    #[Route('/listeInspection/{id}', name: 'listeInspection')]
+    public function inspectionFigurine(string $id, ArmyRepository $armyRepository): Response {
+        $army = $armyRepository->findOneBy(["id" => $id]);
+
+        return $this->render('armyinspection.html.twig', [
+            "army" =>  $army,
+        ]);
+    }
+
+    #[Route('/listeSupression/{id}', name: 'suppressionListe')]
+    public function suppressionFigurine(string $id, EntityManagerInterface $em, ArmyRepository $armyRepository): Response {
+        
+        $army = $armyRepository->findOneBy(["id" => $id]);
+
+        $em->remove($army);
+        $em->flush();
+        $this->addFlash('success', 'Liste suprimé!');
+
+        return $this->redirectToRoute('affichageListe');
+    }
 }
