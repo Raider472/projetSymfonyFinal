@@ -6,13 +6,13 @@ use App\Enum\TypeOfStatus;
 
 class TypeOfStatusEnumType extends EnumType
 {
-    protected function getEnum(): string 
-    { 
+    protected function getEnum(): string
+    {
         return TypeOfStatus::class;
     }
 
-    public function getName() 
-    { 
+    public function getName()
+    {
         return 'type_of_status_enum';
     }
 }

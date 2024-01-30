@@ -23,7 +23,7 @@ class ArmyController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $this->getUser();
             $army->setUser($user);
-            
+
             $em->persist($army);
             $em->flush();
 
@@ -41,7 +41,7 @@ class ArmyController extends AbstractController
     #[Route('/affichageListe', name: 'affichageListe')]
     public function affichageListe(ArmyRepository $armyRepository): Response
     {
-        $army = $armyRepository->findBy(["user" => $this->getUser()]);
+        $army = $armyRepository->findBy(['user' => $this->getUser()]);
 
         return $this->render('afichageListe.html.twig', [
             'armies' => $army,
@@ -49,18 +49,19 @@ class ArmyController extends AbstractController
     }
 
     #[Route('/listeInspection/{id}', name: 'listeInspection')]
-    public function inspectionFigurine(string $id, ArmyRepository $armyRepository): Response {
-        $army = $armyRepository->findOneBy(["id" => $id]);
+    public function inspectionFigurine(string $id, ArmyRepository $armyRepository): Response
+    {
+        $army = $armyRepository->findOneBy(['id' => $id]);
 
         return $this->render('armyinspection.html.twig', [
-            "army" =>  $army,
+            'army' => $army,
         ]);
     }
 
     #[Route('/listeSupression/{id}', name: 'suppressionListe')]
-    public function suppressionFigurine(string $id, EntityManagerInterface $em, ArmyRepository $armyRepository): Response {
-        
-        $army = $armyRepository->findOneBy(["id" => $id]);
+    public function suppressionFigurine(string $id, EntityManagerInterface $em, ArmyRepository $armyRepository): Response
+    {
+        $army = $armyRepository->findOneBy(['id' => $id]);
 
         $em->remove($army);
         $em->flush();

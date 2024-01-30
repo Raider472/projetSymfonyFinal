@@ -21,7 +21,7 @@ class MeleeWeaponType extends AbstractType
                 'label' => "Nombre d'attaques",
             ])
             ->add('weaponSkill', IntegerType::class, [
-                'label' => "Compétence de melee",
+                'label' => 'Compétence de melee',
             ])
             ->add('strenght', IntegerType::class, [
                 'label' => "Force de l'arme",

@@ -24,7 +24,7 @@ class GunType extends AbstractType
                 'label' => "Nombre d'attaques",
             ])
             ->add('ballisticSkill', IntegerType::class, [
-                'label' => "Compétence de tir",
+                'label' => 'Compétence de tir',
             ])
             ->add('strenght', IntegerType::class, [
                 'label' => "Force de l'arme",

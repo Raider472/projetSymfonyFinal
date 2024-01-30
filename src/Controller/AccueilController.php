@@ -24,10 +24,11 @@ class AccueilController extends AbstractController
         $paints = $paintRepository->findAll();
         $figurines = $figurineRepository->findAll();
         $factions = $factionRepository->findAll();
+
         return $this->render('tableauBord.html.twig', [
-            "figurines" => $figurines,
-            "paints" => $paints,
-            "factions" => $factions,
+            'figurines' => $figurines,
+            'paints' => $paints,
+            'factions' => $factions,
         ]);
     }
 }

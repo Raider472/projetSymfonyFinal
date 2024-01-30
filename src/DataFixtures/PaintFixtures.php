@@ -14,13 +14,13 @@ class PaintFixtures extends Fixture
     public function load(ObjectManager $manager)
     {
         $arrayPaints = [
-            ['name' => 'Leadbelcher', 'color' => '#808080', 'type' => 'Base', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Runelord Brass', 'color' => '#544d1d', 'type' => 'Base', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Corax White', 'color' => '#e8e7e3', 'type' => 'Base', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Tesseract Glow', 'color' => '#33cc33', 'type' => 'Special', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Nuln Oil', 'color' => '#595959', 'type' => 'Shade', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Agrax Earthshade', 'color' => '#793a00', 'type' => 'Shade', "stock" => TypeOfStatus::STOCK],
-            ['name' => 'Cool Paint', 'color' => '#793a00', 'type' => 'Shade', "stock" => TypeOfStatus::HORSTOCK],
+            ['name' => 'Leadbelcher', 'color' => '#808080', 'type' => 'Base', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Runelord Brass', 'color' => '#544d1d', 'type' => 'Base', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Corax White', 'color' => '#e8e7e3', 'type' => 'Base', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Tesseract Glow', 'color' => '#33cc33', 'type' => 'Special', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Nuln Oil', 'color' => '#595959', 'type' => 'Shade', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Agrax Earthshade', 'color' => '#793a00', 'type' => 'Shade', 'stock' => TypeOfStatus::STOCK],
+            ['name' => 'Cool Paint', 'color' => '#793a00', 'type' => 'Shade', 'stock' => TypeOfStatus::HORSTOCK],
         ];
 
         foreach ($arrayPaints as $arrayPaint) {

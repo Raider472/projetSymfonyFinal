@@ -152,12 +152,12 @@ class FigurineStats
     public function setFigurine(?Figurine $figurine): static
     {
         // unset the owning side of the relation if necessary
-        if ($figurine === null && $this->figurine !== null) {
+        if (null === $figurine && null !== $this->figurine) {
             $this->figurine->setStats(null);
         }
 
         // set the owning side of the relation if necessary
-        if ($figurine !== null && $figurine->getStats() !== $this) {
+        if (null !== $figurine && $figurine->getStats() !== $this) {
             $figurine->setStats($this);
         }
 

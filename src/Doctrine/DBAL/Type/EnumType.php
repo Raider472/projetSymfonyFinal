@@ -8,15 +8,15 @@ use Doctrine\DBAL\Types\Type;
 abstract class EnumType extends Type
 {
     /**
-     * @return class-string 
+     * @return class-string
      */
-    protected abstract function getEnum(): string;
+    abstract protected function getEnum(): string;
 
-    public function getSQLDeclaration(array $column, AbstractPlatform $platform) 
-    { 
+    public function getSQLDeclaration(array $column, AbstractPlatform $platform)
+    {
         $enum = $this->getEnum();
         $cases = array_map(
-            fn ($enumItem) => "'{$enumItem->value}'", 
+            fn ($enumItem) => "'{$enumItem->value}'",
             $enum::cases()
         );
 
@@ -27,11 +27,11 @@ abstract class EnumType extends Type
     {
         return true;
     }
-    
+
     public function convertToPHPValue($value, AbstractPlatform $platform)
     {
         $enumClass = $this->getEnum();
-        
+
         return $enumClass::from($value);
     }
 

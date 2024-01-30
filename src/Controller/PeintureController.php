@@ -26,39 +26,39 @@ class PeintureController extends AbstractController
     #[Route('/inspectionPeinture/{id}', name: 'inspectionPeinture')]
     public function inspectionPaint(string $id, PaintRepository $paintRepository): Response
     {
-        $paint = $paintRepository->findOneBy(["id" => $id]);
+        $paint = $paintRepository->findOneBy(['id' => $id]);
 
         return $this->render('paintInspection.html.twig', [
-            "paint" =>  $paint,
+            'paint' => $paint,
         ]);
     }
 
     #[Route('/peintureAjout', name: 'creationPeinture')]
-    public function ajoutFigurine(Request $request, EntityManagerInterface $em): Response {
-        
+    public function ajoutFigurine(Request $request, EntityManagerInterface $em): Response
+    {
         $paint = new Paint();
         $form = $this->createForm(PaintType::class, $paint);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-
             $em->persist($paint);
             $em->flush();
-     
+
             $this->addFlash('success', 'Peinture créé!');
+
             return $this->redirectToRoute('accueil');
         }
 
         return $this->render('ajoutPaint.html.twig', [
             'paint' => $paint,
-            'formulaire' => $form->createView()
+            'formulaire' => $form->createView(),
         ]);
     }
 
     #[Route('/peintureSupression/{id}', name: 'suppressionPeinture')]
-    public function suppressionFigurine(string $id, EntityManagerInterface $em, PaintRepository $peintureRepository): Response {
-        
-        $paint = $peintureRepository->findOneBy(["id" => $id]);
+    public function suppressionFigurine(string $id, EntityManagerInterface $em, PaintRepository $peintureRepository): Response
+    {
+        $paint = $peintureRepository->findOneBy(['id' => $id]);
 
         $em->remove($paint);
         $em->flush();
@@ -68,22 +68,23 @@ class PeintureController extends AbstractController
     }
 
     #[Route('/peintureModification/{id}', name: 'modificationPeinture')]
-    public function modificationVetement(string $id, EntityManagerInterface $em, PaintRepository $peintureRepository, Request $request): Response {
-        
-        $paint = $peintureRepository->findOneBy(["id" => $id]);
+    public function modificationVetement(string $id, EntityManagerInterface $em, PaintRepository $peintureRepository, Request $request): Response
+    {
+        $paint = $peintureRepository->findOneBy(['id' => $id]);
         $form = $this->createForm(PaintType::class, $paint);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $em->flush();
-     
+
             $this->addFlash('success', 'Peinture modifié!');
+
             return $this->redirectToRoute('accueil');
         }
 
         return $this->render('ajoutPaint.html.twig', [
             'paint' => $paint,
-            'formulaire' => $form->createView()
+            'formulaire' => $form->createView(),
         ]);
     }
 }

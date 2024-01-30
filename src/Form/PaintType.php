@@ -7,7 +7,6 @@ use App\Enum\TypeOfStatus;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\EnumType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -19,13 +18,13 @@ class PaintType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label' => "Nom de la peinture",
+                'label' => 'Nom de la peinture',
             ])
             ->add('color', TextType::class, [
-                'label' => "Couleur de la peinture (en valeur hex: #111111)",
+                'label' => 'Couleur de la peinture (en valeur hex: #111111)',
             ])
             ->add('type', ChoiceType::class, [
-                'label' => "Type de peinture",
+                'label' => 'Type de peinture',
                 'choices' => [
                     'Base' => 'Base',
                     'Shade' => 'Shade',

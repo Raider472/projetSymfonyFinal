@@ -2,7 +2,6 @@
 
 namespace App\DataFixtures;
 
-use App\Doctrine\DBAL\Type\TypeOfStatusEnumType;
 use App\Entity\Figurine;
 use App\Enum\TypeOfStatus;
 use Doctrine\Bundle\FixturesBundle\Fixture;

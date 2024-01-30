@@ -40,7 +40,7 @@ class FigurineFormType extends AbstractType
                 'label' => 'Nombre de points',
             ])
             ->add('paint', EntityType::class, [
-                'class'=> Paint::class,
+                'class' => Paint::class,
                 'choice_label' => 'name',
                 'label' => 'Peintures associées',
                 'multiple' => true,
