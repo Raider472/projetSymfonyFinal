@@ -1,8 +1,8 @@
-prérequis:
+- prérequis:
     - Xamp
     - composer
 
-installation:
+- installation:
     - cloner le projet dans le fichier "htdocs" de Xamp
     - Taper les commandes suivantes:
         -"composer install"
@@ -11,7 +11,7 @@ installation:
         -"php bin/console doctrine:migrations:migrate"
         -"php bin/console doctrine:fixtures:load"
 
-Utilisateur:
+- Utilisateur:
     -admin
         -login: admin
         -mdp: Admin1
@@ -19,7 +19,7 @@ Utilisateur:
         -login: user
         -mdp: user1
 
-vidéo:
+- vidéo:
     - https://youtu.be/vYj138sudSg
 
 
