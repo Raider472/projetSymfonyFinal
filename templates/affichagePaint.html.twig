@@ -9,7 +9,7 @@
     <div class="carte_container">
     {% for paint in paints %}
         <div class="carte">
-            <a href="">
+            <a href={{ path("inspectionPeinture", {"id": paint.id}) }}>
                 <h2>{{paint.type}}</h2>
                 {% if paint.status.value == "Hors Stock" %}
                     <h3 style="color: red">Hors Stock</h3>

@@ -1,0 +1,30 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Ajout d'une Figurine</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">Ajout d'une Figurine</h1>
+{% endblock %}
+{% block body %}
+    <br class="mt-4 mb-4">
+    <div class="d-flex align-items-center h-100">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-xl-5 col-md-8">
+                    <div class="bg-white rounded shadow-5-strong p-5">
+                        {{ form_start(formulaire) }}
+                            {% for child in formulaire.children %}
+                                {% if child.vars.name == "ajouter" %}
+                                    {{form_row(child , {'attr': {'class': 'btn btn-primary btn-block align-items-center'}})}}
+                                {% else %}
+                                    {{form_row(child)}}
+                                {% endif %}
+                            {% endfor %}
+                            {{ form_rest(formulaire) }}
+                        {{ form_end(formulaire) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -23,6 +23,7 @@
                         <li><a href="{{path('affichageListe')}}">Mes armées</a></li>
                         {% if is_granted('ROLE_ADMIN') %}
                         <li><a href="{{path('creationFigurine') }}">Ajouter une figurine</a></li>
+                        <li><a href="{{path('creationPeinture') }}">Ajouter d'une peinture</a></li>
                         <li><a href="{{path('tableauDeBord') }}">Tableau de Bord</a></li>
                         {% endif %}
                         <li><a href="{{path('app_logout') }}">Déconnexion</a></li>

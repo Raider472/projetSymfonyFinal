@@ -1,0 +1,39 @@
+{% extends "accueil.html.twig" %}
+{% block titreHeader %}
+    <title>Inspection d'une Peinture</title>
+{% endblock %}
+{% block titrePage %}
+    <h1 class="titre">détaile de {{paint.name}}</h1>
+{% endblock %}
+{% block body %}
+    <div class="mini-carte-container">
+        <div class="mini-carte">
+            <h3>{{paint.name}}</h3>
+            <div class="couleur_cercle_{{ paint.id}}"></div>
+        </div>
+        <div>
+            <h3>type : {{paint.type}}</h3>
+            <h3>Statuts : {{paint.status.value}}</h3>
+            {% if is_granted('ROLE_ADMIN') %}
+            <div class="button-admin">
+                <a href="{{ path("modificationPeinture", {"id": paint.id}) }}">
+                    <img src="{{ asset("img/modification.png") }}" alt="Modifier" width="40" height="40">
+                </a>
+                <a href="{{ path("suppressionPeinture", {"id": paint.id}) }}">
+                    <img src="{{ asset("img/suppression.svg") }}" alt="Supprimer" width="40" height="40">
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+        <style>
+            .couleur_cercle_{{ paint.id}}{
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                margin: 0 auto;
+                background-color: {{paint.color}}; 
+        }
+        </style>
+{% endblock %}
