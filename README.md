@@ -12,10 +12,10 @@
         - "php bin/console doctrine:fixtures:load"
 
 - Utilisateur:
-    -admin
+    - admin
         - login: admin
         - mdp: Admin1
-    -user
+    - user
         - login: user
         - mdp: user1
 
