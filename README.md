@@ -5,19 +5,19 @@
 - installation:
     - cloner le projet dans le fichier "htdocs" de Xamp
     - Taper les commandes suivantes:
-        -"composer install"
-        -"php bin/console doctrine:database:create"
-        -"php bin/console doctrine:migrations:diff"
-        -"php bin/console doctrine:migrations:migrate"
-        -"php bin/console doctrine:fixtures:load"
+        - "composer install"
+        - "php bin/console doctrine:database:create"
+        - "php bin/console doctrine:migrations:diff"
+        - "php bin/console doctrine:migrations:migrate"
+        - "php bin/console doctrine:fixtures:load"
 
 - Utilisateur:
     -admin
-        -login: admin
-        -mdp: Admin1
+        - login: admin
+        - mdp: Admin1
     -user
-        -login: user
-        -mdp: user1
+        - login: user
+        - mdp: user1
 
 - vidéo:
     - https://youtu.be/vYj138sudSg
